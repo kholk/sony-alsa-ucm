@@ -1,0 +1,280 @@
+SectionVerb {
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 1"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 0"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 0"
+        ]
+
+        Value {
+                TQ "HiFi"
+                PlaybackPCM "hw:msm8994tomtomsn"
+                CapturePCM "hw:msm8994tomtomsn"
+        }
+
+}
+
+SectionDevice."Speaker" {
+        Comment "Speaker"
+
+        ConflictingDevice [
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='AIF4_VI Mixer SPKR_VI_1' 1"
+                cset "name='AIF4_VI Mixer SPKR_VI_2' 1"
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM RX2 MUX' AIF1_PB"
+                cset "name='SLIM_0_RX Channels' Two"
+                cset "name='RX7 MIX1 INP1' RX1"
+                cset "name='RX8 MIX1 INP1' RX2"
+                cset "name='RX7 Digital Volume' 84"
+                cset "name='RX8 Digital Volume' 84"
+                cset "name='COMP0 Switch' 1"
+                cset "name='VI_FEED_TX Channels' Two"
+                cset "name='SLIM0_RX_VI_FB_LCH_MUX' SLIM4_TX"
+                cset "name='SLIM0_RX_VI_FB_RCH_MUX' SLIM4_TX"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='AIF4_VI Mixer SPKR_VI_1' 0"
+                cset "name='AIF4_VI Mixer SPKR_VI_2' 0"
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM RX2 MUX' ZERO"
+                cset "name='SLIM_0_RX Channels' One"
+                cset "name='RX7 MIX1 INP1' ZERO"
+                cset "name='RX8 MIX1 INP1' ZERO"
+                cset "name='RX7 Digital Volume' 84"
+                cset "name='RX8 Digital Volume' 84"
+                cset "name='COMP0 Switch' 0"
+                cset "name='VI_FEED_TX Channels' Two"
+                cset "name='SLIM0_RX_VI_FB_LCH_MUX' ZERO"
+                cset "name='SLIM0_RX_VI_FB_RCH_MUX' ZERO"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 0"
+        ]
+
+        Value {
+                PlaybackChannels "2"
+        }
+
+}
+
+SectionDevice."Headphones" {
+        Comment "Headset"
+
+        ConflictingDevice [
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM RX2 MUX' AIF1_PB"
+                cset "name='SLIM_0_RX Channels' Two"
+                cset "name='RX1 MIX1 INP1' RX1"
+                cset "name='RX2 MIX1 INP1' RX2"
+                cset "name='CLASS_H_DSM MUX' DSM_HPHL_RX1"
+                cset "name='HPHL DAC Switch' 1"
+                cset "name='COMP1 Switch' 1"
+                cset "name='HPHL Volume' 20"
+                cset "name='HPHR Volume' 20"
+                cset "name='RX1 Digital Volume' 76"
+                cset "name='RX2 Digital Volume' 76"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM RX2 MUX' ZERO"
+                cset "name='SLIM_0_RX Channels' One"
+                cset "name='RX1 MIX1 INP1' ZERO"
+                cset "name='RX2 MIX1 INP1' ZERO"
+                cset "name='CLASS_H_DSM MUX' ZERO"
+                cset "name='HPHL DAC Switch' 0"
+                cset "name='COMP1 Switch' 0"
+                cset "name='HPHL Volume' 20"
+                cset "name='HPHR Volume' 20"
+                cset "name='RX1 Digital Volume' 84"
+                cset "name='RX2 Digital Volume' 84"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 0"
+        ]
+
+        Value {
+                PlaybackChannels "2"
+        }
+
+}
+
+SectionDevice."Handset" {
+        Comment "Handset earpiece"
+
+        ConflictingDevice [
+                "Speaker"
+                "SpeakerMic"
+                "Headphones"
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM_0_RX Channels' One"
+                cset "name='RX1 MIX1 INP1' RX1"
+                cset "name='CLASS_H_DSM MUX' DSM_HPHL_RX1"
+                cset "name='DAC1 Switch' 1"
+                cset "name='RX1 Digital Volume' 84"
+                cset "name='PM8994_Ear_Enable_States' Enable"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='SLIM RX1 MUX' AIF1_PB"
+                cset "name='SLIM_0_RX Channels' One"
+                cset "name='RX1 MIX1 INP1' ZERO"
+                cset "name='CLASS_H_DSM MUX' ZERO"
+                cset "name='DAC1 Switch' 0"
+                cset "name='RX1 Digital Volume' 84"
+                cset "name='PM8994_Ear_Enable_States' Disable"
+                cset "name='SLIMBUS_0_RX Audio Mixer MultiMedia1' 0"
+        ]
+
+        Value {
+                PlaybackChannels "2"
+        }
+
+}
+
+SectionDevice."HandsetMic" {
+        Comment "Handset microphone"
+
+        ConflictingDevice [
+                "Speaker"
+                "SpeakerMic"
+                "HeadsetMic"
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='DEC7 Volume' 84"
+                cset "name='AIF1_CAP Mixer SLIM TX7' 1"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' DEC7"
+                cset "name='DEC7 MUX' DMIC1"
+                cset "name='IIR1 INP1 MUX' DEC7"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='DEC7 Volume' 84"
+                cset "name='AIF1_CAP Mixer SLIM TX7' 0"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' ZERO"
+                cset "name='DEC7 MUX' ZERO"
+                cset "name='IIR1 INP1 MUX' ZERO"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 0"
+        ]
+
+        Value {
+                CaptureChannels "2"
+        }
+
+}
+
+SectionDevice."SpeakerMic" {
+        Comment "Handset microphone for speaker-mode"
+
+        ConflictingDevice [
+                "Handset"
+                "HandsetMic"
+                "HeadsetMic"
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='DEC7 Volume' 84"
+                cset "name='AIF1_CAP Mixer SLIM TX7' 1"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' DEC7"
+                cset "name='DEC7 MUX' DMIC1"
+                cset "name='IIR1 INP1 MUX' DEC7"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='DEC7 Volume' 84"
+                cset "name='AIF1_CAP Mixer SLIM TX7' 0"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' ZERO"
+                cset "name='DEC7 MUX' ZERO"
+                cset "name='IIR1 INP1 MUX' ZERO"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 0"
+        ]
+
+        Value {
+                CaptureChannels "2"
+        }
+
+}
+
+SectionDevice."HeadsetMic" {
+        Comment "Headset microphone"
+
+        ConflictingDevice [
+                "HandsetMic"
+                "SpeakerMic"
+        ]
+
+        EnableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='AIF1_CAP Mixer SLIM TX7' 1"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' DEC5"
+                cset "name='DEC5 MUX' ADC2"
+                cset "name='IIR1 INP1 MUX' DEC5"
+                cset "name='DEC5 Volume' 99"
+                cset "name='ADC2 Volume' 8"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 1"
+        ]
+
+        DisableSequence [
+                cdev "hw:msm8994tomtomsn"
+
+                cset "name='AIF1_CAP Mixer SLIM TX7' 0"
+                cset "name='SLIM_0_TX Channels' One"
+                cset "name='SLIM TX7 MUX' ZERO"
+                cset "name='DEC5 MUX' ZERO"
+                cset "name='IIR1 INP1 MUX' ZERO"
+                cset "name='DEC5 Volume' 84"
+                cset "name='ADC2 Volume' 10"
+                cset "name='MultiMedia1 Mixer SLIM_0_TX' 0"
+        ]
+
+        Value {
+                CaptureChannels "2"
+        }
+
+}
+
